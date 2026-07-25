@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm create *)",
+      "Bash(mv deeply-radiation/.gitignore .)",
+      "Bash(mv deeply-radiation/.vscode .)",
+      "Bash(rmdir deeply-radiation *)",
+      "Bash(npm install *)"
+    ]
+  }
+}

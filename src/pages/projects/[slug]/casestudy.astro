@@ -1,0 +1,136 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import { allProjects } from '../../../data/projects';
+
+export function getStaticPaths() {
+  const slugsWithCasestudy = ['microinterventions', 'communication-gear'];
+  return allProjects
+    .filter(p => slugsWithCasestudy.includes(p.slug))
+    .map((project) => ({
+      params: { slug: project.slug },
+      props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} — Case Study`}>
+    <Nav current="casestudy" slug={project.slug} />
+    <main class="px-[10px]">
+        {project.slug === 'microinterventions' && (
+            <div class="mt-6 w-2/5 pb-20">
+                <p class="text-[16.8px] text-black mb-1 leading-tight">
+                    *On average, 47% of our screen time is accidental scrolling
+                </p>
+                <p class="text-[16.8px] text-[#787878] mb-6 leading-tight">
+                    The report „Age of Autopilot" University of Cambridge (2026)
+                </p>
+                <p class="text-[16.8px] text-black mb-1 leading-tight">
+                    *95 minutes a day spent in continuous video loops
+                </p>
+                <a href="https://www.blankspaces.app/blog/tiktok-screen-time-statistics" target="_blank" rel="noopener noreferrer" class="text-[16.8px] text-[#787878] underline mb-6 block leading-tight">
+                    blankspaces.app
+                </a>
+                <p class="text-[16.8px] text-black mb-4 leading-tight">
+                    Interaction 1: When the algorithm detects a high-speed, continuous scrolling pattern (indicative of doomscrolling), the text on the screen dynamically fades out. To make the text visible again, the user must slow down and return to the previous position. We went through multiple iterations to ensure the fade-out effect feels organic and non-intrusive.
+                </p>
+                <p class="text-[16.8px] text-black mb-4 leading-tight">
+                    Interaction 2: Instead of automatically playing the next short-form video, the extension introduces a deliberate pause between pieces of content. After a user finishes watching a reel, the feed is interrupted and the front-facing camera briefly activates, allowing users to see themselves before deciding whether to continue scrolling. This moment of self-reflection is designed to break automatic consumption patterns and encourage more intentional engagement.
+                </p>
+                <p class="text-[16.8px] text-[#787878] mb-6 leading-tight">
+                    Used videos:<br/>
+                    <a href="https://www.tiktok.com/@maligoshik/video/7650166936441015573" target="_blank" rel="noopener noreferrer" class="underline">tiktok.com</a><br/>
+                    <a href="https://www.instagram.com/reel/DWO63aeDU2M/" target="_blank" rel="noopener noreferrer" class="underline">instagram.com/reel 1</a><br/>
+                    <a href="https://www.instagram.com/reel/DV_V9NuCcmJ/" target="_blank" rel="noopener noreferrer" class="underline">instagram.com/reel 2</a>
+                </p>
+            </div>
+        )}
+        {project.slug === 'communication-gear' && (
+            <div class="mt-6 w-2/5 pb-20">
+                <p class="text-[16.8px] text-[#787878] mb-1 leading-tight">Interviews data</p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    100% of participants* experienced situations in which their physical boundaries** were exceeded during choreographic processes.<br/><br/>
+                    <span class="text-[16.8px] text-[#787878]">*Participants were professional dancers actively working in the field. The research was conducted with a group of 20 participants. **Physical boundary referred to excessive physical effort, discomfort, and a lack of safety while working in a group. It did not include sexual violence.</span>
+                </p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    9 out of 10 participants perceived expressing discomfort or fatigue as a sign of losing professionalism.
+                </p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    Only 3 out of 10 participants had ever communicated that their physical boundaries had been crossed during a choreographic process.
+                </p>
+                  <p class="text-[16.8px] text-[#787878] mb-1 leading-tight">Insights</p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    The work of a dancer is primarily physical. Boundary violations affect the safety of people working in physically and endurance-demanding conditions. This impacts not only the psychological dimension, but above all the physical one.
+                </p>
+                <p class="text-[16.8px] text-black mb-1 leading-tight">
+                    "I felt like I was not giving them my full weight because I was physically afraid they would let me fall. When you dance in a group, you have to be able to trust the people you're working with completely."
+                </p>
+                   <p class="text-[16.8px] text-[#787878] mb-6 leading-tight">Ula (dancer)</p>
+                     <p class="text-[16.8px] text-[#787878] mb-1 leading-tight">Design problem</p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    How might we design tools for creative workplaces that encourage professionalism while creating space for self-expression, play, and a sense of belonging? How can communication gear make personal boundaries visible through movement and transparent communication?
+                </p>
+                <p class="text-[16.8px] text-[#787878] mb-1 leading-tight">Collaboration</p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    With Polish choreographer Marta Wołowiec and dancers Haincheng Zhang, Alicja Weisskopf, Wojciech Sordyl, Matylda Stolarczyk.
+                </p>
+                <p class="text-[16.8px] text-black mb-6 leading-tight">
+                    After first prototyping, two aspects emerged as significantly influencing communication and the management of personal space.
+                </p>
+                <span id="cs-video-label" class="pointer-events-none fixed z-50 hidden rounded-[7px] text-[12px] font-medium leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; max-width: 250px;"></span>
+<span id="cs-image-label" class="pointer-events-none fixed z-50 hidden rounded-[7px] text-[12px] font-medium leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; max-width: 250px;"></span>
+
+<div class="flex gap-[12px] mt-4 mb-6">
+    <div class="w-1/2">
+        <div id="cs-video-el">
+            <video
+                class="w-full rounded-[15px] object-cover"
+                src="/communication-gear-cs2.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+            />
+        </div>
+        <p class="text-[16.8px] text-black mt-2 leading-tight">
+            Spatial aspects; space (whether we see each other or sit close/far apart) affects our sense of security.
+        </p>
+    </div>
+    <div class="w-1/2">
+        <div id="cs-image-el">
+            <img src="/communication-gear-cs1.jpg" class="w-full rounded-[15px] object-cover" />
+        </div>
+        <p class="text-[16.8px] text-black mt-2 leading-tight">
+            Technical aspects; limits directly shape specific modes of interaction.
+        </p>
+    </div>
+</div>
+                <p class="text-[16.8px] text-black leading-tight">
+                    Combining spatial and technical elements, the project explores notions of personal space within physically demanding work through movement. Its visual language and functionality draw inspiration from equipment used in extreme conditions.
+                </p>
+            </div>
+        )}
+    </main>
+    <script>
+    function setupHover(elId, labelId, text) {
+        const el = document.getElementById(elId);
+        const label = document.getElementById(labelId);
+        if (!el || !label) return;
+        el.addEventListener('mouseenter', () => {
+            label.classList.remove('hidden');
+            label.textContent = text;
+        });
+        el.addEventListener('mouseleave', () => {
+            label.classList.add('hidden');
+        });
+        el.addEventListener('mousemove', (e) => {
+            label.style.left = e.clientX + 15 + 'px';
+            label.style.top = e.clientY + 15 + 'px';
+        });
+    }
+    setupHover('cs-video-el', 'cs-video-label', 'Source video: LaHorde rehearsal');
+    setupHover('cs-image-el', 'cs-image-label', 'Inspiration: gear accessories');
+</script>
+</Layout>

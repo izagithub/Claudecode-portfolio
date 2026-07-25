@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Layout title="About — Portfolio">
+    <Nav current="about" />
+    <main class="px-[10px] pb-20">
+        <div class="mt-6 w-2/5">
+           <audio id="about" src="/About.mp3"></audio>
+<button id="audio-btn" class="text-[16.8px] text-black cursor-pointer">
+    sound off
+</button>
+			<div class="mt-6">
+    <a 
+        href="https://www.linkedin.com/in/izabela-szumniak-0554822a1" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="text-[16.8px] text-black block leading-tight"
+    >
+        LinkedIn
+    </a>
+    <a 
+        href="mailto:izaszumniak@gmail.com" 
+        class="text-[16.8px] text-black block leading-tight"
+    >
+        izaszumniak[at]gmail.com
+    </a>
+</div>
+        </div>
+    </main>
+    <script>
+    const audio = document.getElementById('about') as HTMLAudioElement;
+    const btn = document.getElementById('audio-btn');
+    
+    if (audio && btn) {
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = 'sound on';
+            } else {
+                audio.pause();
+                btn.textContent = 'sound off';
+            }
+        });
+    }
+</script>
+</Layout>

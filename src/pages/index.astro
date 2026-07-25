@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import DashedPill from '../components/DashedPill.astro';
+import { recentProjects, archivedProjects } from '../data/projects';
+
+const mediumUrl =
+  'https://medium.com/@izaszumniak/why-building-digital-trust-feels-so-exhausting-ccdf04e6f475';
+---
+
+<Layout title="Work — Portfolio">
+	<Nav current="work" />
+	<main class="px-[10px] pb-24">
+		<section class="mt-[20px] mb-20">
+			<span id="most-recent-label" class="pointer-events-none fixed z-50 hidden rounded-[20px] px-[18px] py-[15px] text-[12px] text-black font-medium leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; max-width: 250px; ">
+</span>
+			<div class="gallery-recent relative grid grid-cols-3 gap-[6px]">
+				{
+					recentProjects.map((project) => (
+						<a href={`/projects/${project.slug}`} class="block relative group/card" style="height: calc(100vh - 230px);" data-tags={project.tags || ''} data-collaborator={project.collaborator || ''}>
+    {project.cover
+        ? <img src={project.cover} class="h-full w-full object-cover rounded-[5px] group-hover/card:opacity-0 transition-opacity duration-300" />
+        : <div class="h-full w-full bg-neutral-300 rounded-[5px]" />
+    }
+    {project.hoverVideo && (
+        <video
+            class="absolute inset-0 h-full w-full object-cover rounded-[5px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"
+            src={project.hoverVideo}
+            muted
+            loop
+            playsinline
+            data-hover-video
+        />
+    )}
+    <p class="absolute bottom-[-28px] left-0 text-[16.8px] text-black">{project.title}</p>
+</a>
+					))
+				}
+			</div>
+		</section>
+
+		<section>
+			<span class="mb-6 inline-block rounded-[6px] text-[16.8px] text-black font-medium">
+    Archived work
+</span>
+<ul class="flex flex-col gap-0">
+			<li class="relative">
+    <a href={mediumUrl} target="_blank" rel="noopener noreferrer" class="text-black">
+        UX article on Medium: Why does building digital trust feels so exhausting
+    </a>
+    <span id="external-label" class="pointer-events-none fixed z-50 hidden rounded-[7px] text-[12px] leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; max-width: 187px;">
+        External link
+    </span>
+</li>
+				{
+					archivedProjects.map((project) => (
+						<li>
+							<a href={`/projects/${project.slug}`} class="text-black">
+								{project.title}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</main>
+</Layout>
+
+<script>
+    const label = document.getElementById('most-recent-label');
+const gallery = document.querySelector('.gallery-recent');
+const projectLinks = document.querySelectorAll('.gallery-recent a');
+
+gallery?.addEventListener('mouseleave', () => {
+    label?.classList.add('hidden');
+});
+
+projectLinks.forEach(link => {
+    const title = link.querySelector('p')?.textContent || '';
+    const tags = link.getAttribute('data-tags') || '';
+    const collaborator = link.getAttribute('data-collaborator') || '';
+    
+    link.addEventListener('mouseenter', () => {
+        label?.classList.remove('hidden');
+        if (label) {
+            let html = `Most recent: ${title}`;
+            if (tags) html += `<br/>${tags}`;
+            if (collaborator) html += `<br/><br/>${collaborator}`;
+            label.innerHTML = html;
+        }
+    });
+    link.addEventListener('mousemove', (e) => {
+        if (label) {
+            label.style.left = e.clientX + 15 + 'px';
+            label.style.top = e.clientY + 15 + 'px';
+        }
+    });
+});
+const externalLabel = document.getElementById('external-label');
+const externalLink = document.querySelector('a[href*="medium.com"]');
+
+externalLink?.addEventListener('mouseenter', () => {
+    externalLabel?.classList.remove('hidden');
+});
+externalLink?.addEventListener('mouseleave', () => {
+    externalLabel?.classList.add('hidden');
+});
+externalLink?.addEventListener('mousemove', (e) => {
+    if (externalLabel) {
+        externalLabel.style.left = e.clientX + 15 + 'px';
+        externalLabel.style.top = e.clientY + 15 + 'px';
+    }
+});
+document.querySelectorAll('[data-hover-video]').forEach(video => {
+    const el = video as HTMLVideoElement;
+    const card = el.closest('.group\\/card');
+    card?.addEventListener('mouseenter', () => el.play());
+    card?.addEventListener('mouseleave', () => { el.pause(); el.currentTime = 0; });
+});
+</script>

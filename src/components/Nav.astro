@@ -1,0 +1,34 @@
+---
+interface Props {
+  current: 'work' | 'about' | 'project' | 'casestudy';
+  slug?: string;
+}
+
+const { current, slug } = Astro.props;
+
+const inactive = 'text-[#B5B5B5]';
+const active = 'text-black';
+
+const slugsWithCasestudy = ['microinterventions', 'communication-gear'];
+const hasCasestudy = slug ? slugsWithCasestudy.includes(slug) : false;
+
+const left =
+  current === 'project' || current === 'casestudy'
+    ? { label: 'Back', href: '/', className: inactive }
+    : { label: 'Work', href: '/', className: current === 'work' ? active : inactive };
+
+const middle =
+  current === 'project' || current === 'casestudy'
+    ? { label: 'About', href: `/projects/${slug}`, className: current === 'project' ? active : inactive }
+    : { label: 'About', href: '/about', className: current === 'about' ? active : inactive };
+
+const casestudyLink = hasCasestudy
+  ? { label: 'Case study', href: `/projects/${slug}/casestudy`, className: current === 'casestudy' ? active : inactive }
+  : null;
+---
+
+<nav class="relative mt-[160px] ml-[10px] flex gap-3 text-[16.8px] font-medium">
+    <a href={left.href} class={left.className}>{left.label}</a>
+    <a href={middle.href} class={middle.className}>{middle.label}</a>
+    {casestudyLink && <a href={casestudyLink.href} class={casestudyLink.className}>{casestudyLink.label}</a>}
+</nav>

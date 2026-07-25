@@ -1,0 +1,32 @@
+---
+// Floating "external link" badge: a tight, fit-content rounded rectangle with
+// a precise 0.5px dashed stroke (4px dash, 5px gap). Native CSS
+// `border-style: dashed` can't control dash/gap length, so the border is
+// drawn as an SVG rect sized to the box via percentage coordinates.
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<span class:list={['relative inline-block w-fit whitespace-nowrap bg-black', className]}>
+	<svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none" aria-hidden="true">
+		<rect
+			x="0.5"
+			y="0.5"
+			width="calc(100% - 1px)"
+			height="calc(100% - 1px)"
+			rx="6"
+			ry="6"
+			fill="none"
+			stroke="#FFFFFF"
+			stroke-width="0.5"
+			stroke-dasharray="4 5"
+			vector-effect="non-scaling-stroke"
+		></rect>
+	</svg>
+	<span class="relative z-10 block px-[10px] py-[3px] text-[16.8px] text-white">
+		<slot />
+	</span>
+</span>
