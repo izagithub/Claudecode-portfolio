@@ -22,3 +22,5 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+public/*.MOV
+public/watchmeburn-animation.mp4
