@@ -6,43 +6,55 @@ import Nav from '../components/Nav.astro';
 <Layout title="About — Portfolio">
     <Nav current="about" />
     <main class="px-[10px] pb-20">
-        <div class="mt-6 w-2/5">
-           <audio id="about" src="/About.mp3"></audio>
-<button id="audio-btn" class="text-[16.8px] text-black cursor-pointer">
-    sound off
-</button>
-			<div class="mt-6">
-    <a 
-        href="https://www.linkedin.com/in/izabela-szumniak-0554822a1" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="text-[16.8px] text-black block leading-tight"
-    >
-        LinkedIn
-    </a>
-    <a 
-        href="mailto:izaszumniak@gmail.com" 
-        class="text-[16.8px] text-black block leading-tight"
-    >
-        izaszumniak[at]gmail.com
-    </a>
-</div>
+        <div class="mt-6 w-full md:w-2/5">
+            <div class="flex justify-start md:hidden mb-4">
+                <audio id="about-mobile" src="/About.mp3"></audio>
+                <button id="audio-btn-mobile" class="text-[16.8px] text-black cursor-pointer">
+                    sound off
+                </button>
+            </div>
+            <div class="flex gap-[40px] items-start">
+                <div class="flex-1">
+                    <p class="text-[16.8px] text-black mb-6 leading-tight">
+                        I'm a Product and Interaction Designer with a background in architecture, creative direction and UX design. I use research, storytelling, prototyping, and AI-assisted development to design products grounded in how people think, behave, and interact with emerging technology.
+                    </p>
+                    <p class="text-[16.8px] text-[#787878] mb-1 leading-tight">Capabilities:</p>
+                    <p class="text-[16.8px] text-black mb-1 leading-tight">Research — Understanding people and context before designing for them.</p>
+                    <p class="text-[16.8px] text-black mb-1 leading-tight">Storytelling — Shaping ideas into narratives people connect with.</p>
+                    <p class="text-[16.8px] text-black mb-1 leading-tight">Prototyping — Testing ideas early.</p>
+                    <p class="text-[16.8px] text-black mb-6 leading-tight">AI-assisted Development — Turning concepts into working products.</p>
+                    <div class="mt-6">
+                        <p class="text-[16.8px] text-[#787878] mb-1 leading-tight">Get in touch:</p>
+                        <a href="https://www.linkedin.com/in/izabela-szumniak-0554822a1" target="_blank" rel="noopener noreferrer" class="text-[16.8px] text-black block leading-tight">linkedIn</a>
+                        <a href="mailto:izaszumniak@gmail.com" class="text-[16.8px] text-black block leading-tight">email</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <audio id="about-desktop" src="/About.mp3"></audio>
+                    <button id="audio-btn-desktop" class="text-[16.8px] text-black cursor-pointer whitespace-nowrap">
+                        sound off
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
     <script>
-    const audio = document.getElementById('about') as HTMLAudioElement;
-    const btn = document.getElementById('audio-btn');
-    
-    if (audio && btn) {
-        btn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                btn.textContent = 'sound on';
-            } else {
-                audio.pause();
-                btn.textContent = 'sound off';
+        function setupAudio(audioId, btnId) {
+            const audio = document.getElementById(audioId) as HTMLAudioElement;
+            const btn = document.getElementById(btnId);
+            if (audio && btn) {
+                btn.addEventListener('click', () => {
+                    if (audio.paused) {
+                        audio.play();
+                        btn.textContent = 'sound on';
+                    } else {
+                        audio.pause();
+                        btn.textContent = 'sound off';
+                    }
+                });
             }
-        });
-    }
-</script>
+        }
+        setupAudio('about-mobile', 'audio-btn-mobile');
+        setupAudio('about-desktop', 'audio-btn-desktop');
+    </script>
 </Layout>

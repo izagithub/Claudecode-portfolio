@@ -24,7 +24,7 @@ export const recentProjects: Project[] = [
       type: 'video',
       src: '/plugins-animation-hero1.mp4'
     },
-    tags: 'UX, UI, AI, Motion',
+    tags: 'UX, UI, AI, Motion design. Concept with Szymon Łabuś',
     collaborator: 'Concept with Szymon Łabuś',
     hoverVideo: '/plugins-hoover.mp4'
   },
@@ -37,7 +37,7 @@ export const recentProjects: Project[] = [
         type: 'video',
         src: '/communication-gear-hero.mp4'
     },
-    tags: 'Product design, interaction, 3d'
+    tags: 'Product design, human-centered, 3d'
   },
   {
     slug: 'watch-me-burn',
@@ -48,7 +48,7 @@ export const recentProjects: Project[] = [
       type: 'video',
       src: '/watchmeburn-animation.mp4'
     },
-    tags: 'UX, storytelling, 3d'
+    tags: 'UX research, tech, 3d'
   },
 ];
 
@@ -67,7 +67,8 @@ export const archivedProjects: Project[] = [
     title: 'The Color of Air (student code-installation)',
     description: 'Project description placeholder for The Color of Air.',
     slides: ['/Color-air-one.jpg', '/Color-air-two.jpg'],
-    layout: 'narrow'
+    layout: 'narrow',
+    tags: 'Code, installation, architecture',
   },
 ];
 
