@@ -20,14 +20,14 @@ const { project } = Astro.props;
 			{project.heroMedia?.type === 'video' && (
 				<div class="relative h-full w-full">
 					<video
-						id="hero-video"
-						class="h-full w-full object-cover"
-						src={project.heroMedia.src}
-						autoplay
-						muted
-						loop
-						playsinline
-					/>
+    id="hero-video"
+    class="h-full w-full object-cover"
+    src={project.heroMedia.src}
+    autoplay
+    muted
+    loop
+    playsinline
+/>
 					<button
     id="mute-btn"
     class="absolute bottom-[5px] left-[5px] z-10 flex items-center justify-center rounded-[25px] bg-white px-[10px] py-[3px] text-[12px] text-black"
