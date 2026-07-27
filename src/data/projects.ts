@@ -58,9 +58,9 @@ export const archivedProjects: Project[] = [
     title: 'Extended data font',
     description: 'Project description placeholder for Extended data font.',
     heroMedia: {
-        type: 'video',
-        src: '/font-animation.mp4'
-    }
+    type: 'video',
+    src: 'https://res.cloudinary.com/dooodtng5/video/upload/v1785146477/watchmeburn-animation_nwzgcf.mp4'
+}
   },
   {
     slug: 'color-of-air',
