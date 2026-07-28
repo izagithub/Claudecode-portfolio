@@ -120,16 +120,6 @@ const { project } = Astro.props;
         </p>
     </div>
 </div>
-<button id="gallery-btn" class="text-[16.8px] text-black cursor-pointer mb-6 mt-4">
-    Gallery →
-</button>
-
-<div id="gallery" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
-    <button id="gallery-close" class="absolute top-[20px] right-[20px] text-white text-[16.8px] cursor-pointer">Close</button>
-    <button id="gallery-prev" class="absolute left-[20px] text-white text-[30px] cursor-pointer">←</button>
-    <button id="gallery-next" class="absolute right-[20px] text-white text-[30px] cursor-pointer">→</button>
-    <img id="gallery-img" src="/display gallery/g-cg1.jpg" class="max-h-[90vh] max-w-[90vw] object-contain rounded-[5px]" />
-</div>
                 <p class="text-[16.8px] text-black leading-tight">
                     Combining spatial and technical elements, the project explores notions of personal space within physically demanding work through movement. Its visual language and functionality draw inspiration from equipment used in extreme conditions.
                 </p>
@@ -155,6 +145,16 @@ const { project } = Astro.props;
                     <a href="https://www.tiktok.com/@rambertdance/video/7501586462668786966?is_from_webapp=1&sender_device=pc&web_id=7665766785551730198" target="_blank" rel="noopener noreferrer" class="underline">tiktok.com</a><br/>
                     Videos from LaHorde instagram
                     </p>
+                    <button id="gallery-btn" class="text-[16.8px] text-black cursor-pointer mb-6 mt-4">
+    Gallery →
+</button>
+
+<div id="gallery" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+    <button id="gallery-close" class="absolute top-[20px] right-[20px] text-white text-[16.8px] cursor-pointer">Close</button>
+    <button id="gallery-prev" class="absolute left-[20px] text-white text-[30px] cursor-pointer">←</button>
+    <button id="gallery-next" class="absolute right-[20px] text-white text-[30px] cursor-pointer">→</button>
+    <img id="gallery-img" src="/display gallery/g-cg1.jpg" class="max-h-[90vh] max-w-[90vw] object-contain rounded-[5px]" />
+</div>
             </div>
         )}
     </main>
