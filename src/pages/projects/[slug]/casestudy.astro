@@ -120,6 +120,16 @@ const { project } = Astro.props;
         </p>
     </div>
 </div>
+<button id="gallery-btn" class="text-[16.8px] text-black cursor-pointer mb-6 mt-4">
+    Gallery →
+</button>
+
+<div id="gallery" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+    <button id="gallery-close" class="absolute top-[20px] right-[20px] text-white text-[16.8px] cursor-pointer">Close</button>
+    <button id="gallery-prev" class="absolute left-[20px] text-white text-[30px] cursor-pointer">←</button>
+    <button id="gallery-next" class="absolute right-[20px] text-white text-[30px] cursor-pointer">→</button>
+    <img id="gallery-img" src="/display gallery/g-cg1.jpg" class="max-h-[90vh] max-w-[90vw] object-contain rounded-[5px]" />
+</div>
                 <p class="text-[16.8px] text-black leading-tight">
                     Combining spatial and technical elements, the project explores notions of personal space within physically demanding work through movement. Its visual language and functionality draw inspiration from equipment used in extreme conditions.
                 </p>
@@ -176,5 +186,34 @@ const { project } = Astro.props;
             cs3Btn.textContent = cs3Video.muted ? 'sound off' : 'sound on';
         });
     }
+
+    const galleryBtn = document.getElementById('gallery-btn');
+    const gallery = document.getElementById('gallery');
+    const galleryClose = document.getElementById('gallery-close');
+    const galleryPrev = document.getElementById('gallery-prev');
+    const galleryNext = document.getElementById('gallery-next');
+    const galleryImg = document.getElementById('gallery-img') as HTMLImageElement;
+
+    const images = [
+        '/display-gallery/g-cg1.jpg',
+        '/display-gallery/g-cg2.jpg',
+        '/display-gallery/g-cg3.jpg'
+    ];
+    let current = 0;
+
+    galleryBtn?.addEventListener('click', () => {
+        gallery?.classList.remove('hidden');
+    });
+    galleryClose?.addEventListener('click', () => {
+        gallery?.classList.add('hidden');
+    });
+    galleryPrev?.addEventListener('click', () => {
+        current = (current - 1 + images.length) % images.length;
+        if (galleryImg) galleryImg.src = images[current];
+    });
+    galleryNext?.addEventListener('click', () => {
+        current = (current + 1) % images.length;
+        if (galleryImg) galleryImg.src = images[current];
+    });
 </script>
 </Layout>
