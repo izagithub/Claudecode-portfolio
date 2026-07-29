@@ -63,6 +63,12 @@ export const archivedProjects: Project[] = [
     }
   },
   {
+    slug: 'metabolism-research',
+    title: 'Metabolism research',
+    description: '',
+    tags: 'Research, publication',
+},
+  {
     slug: 'color-of-air',
     title: 'The Color of Air (student code-installation)',
     description: 'Project description placeholder for The Color of Air.',

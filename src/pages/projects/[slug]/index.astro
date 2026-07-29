@@ -197,6 +197,15 @@ const { project } = Astro.props;
        <img src="/Font1.jpg" class="w-full md:w-4/5 mt-4" />
     </div>
 )}
+{project.slug === 'metabolism-research' && (
+    <div class="mt-6 w-full pb-20">
+        <iframe
+            src="/metabolism-research.pdf"
+            class="w-full"
+            style="height: calc(100vh - 214px);"
+        />
+    </div>
+)}
 	{project.slug === 'color-of-air' && (
     <div class="mt-6 w-full md:w-1/3 px-0">
         <p class="text-[16.8px] text-black mb-4">
