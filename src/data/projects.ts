@@ -12,6 +12,7 @@ export interface Project {
   tags?: string;
   collaborator?: string;
   hoverVideo?: string;
+  pdfUrl?: string;
 }
 
 export const recentProjects: Project[] = [
@@ -67,6 +68,7 @@ export const archivedProjects: Project[] = [
     title: 'Metabolism research',
     description: '',
     tags: 'Research, publication',
+    pdfUrl: '/metabolism-research.pdf'
 },
   {
     slug: 'color-of-air',

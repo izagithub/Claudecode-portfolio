@@ -51,8 +51,11 @@ const mediumUrl =
 </li>
 				{
 					archivedProjects.map((project) => (
-						<li>
-    <a href={`/projects/${project.slug}`} class="text-black block">
+    <li>
+    <a href={project.pdfUrl ? project.pdfUrl : `/projects/${project.slug}`} 
+       class="text-black block"
+       target={project.pdfUrl ? '_blank' : ''}
+       rel={project.pdfUrl ? 'noopener noreferrer' : ''}>
         {project.title}
     </a>
     {project.tags && <p class="text-[15px] mt-0 leading-tight text-[#787878]">{project.tags}</p>}
