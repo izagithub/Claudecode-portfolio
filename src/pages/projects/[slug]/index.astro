@@ -18,24 +18,34 @@ const { project } = Astro.props;
 	<main class="px-[10px]">
 		<section class={`relative mt-[20px] h-[calc(100vh_-_214px)] overflow-hidden rounded-[5px] bg-neutral-300 ${project.layout === 'narrow' ? 'w-full md:w-1/3' : 'w-full'}`}>
 			{project.heroMedia?.type === 'video' && (
-				<div class="relative h-full w-full">
-					<video
-    id="hero-video"
-    class="h-full w-full object-cover"
-    src={project.heroMedia.src}
-    autoplay
-    muted
-    loop
-    playsinline
-/>
-					<button
-    id="mute-btn"
-    class="absolute bottom-[5px] left-[5px] z-10 flex items-center justify-center rounded-[25px] bg-white px-[10px] py-[3px] text-[12px] text-black"
->
-    sound off
-</button>
-				</div>
-			)}
+    <div class="relative h-full w-full group/hero">
+        <video
+            id="hero-video"
+            class="h-full w-full object-cover"
+            src={project.heroMedia.src}
+            autoplay
+            muted
+            loop
+            playsinline
+        />
+        <button
+            id="mute-btn"
+            class="absolute bottom-[5px] left-[5px] z-10 flex items-center justify-center rounded-[25px] bg-white px-[10px] py-[3px] text-[12px] text-black"
+        >
+            sound off
+        </button>
+        {project.slug === 'communication-gear' && (
+            
+                href="/projects/communication-gear/casestudy#cs3-section"
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover/hero:opacity-100 transition-opacity duration-300 cursor-pointer"
+            >
+                <span class="bg-white rounded-[25px] px-[16px] py-[6px] text-[16px] text-black font-medium">
+                    see full video
+                </span>
+            </a>
+        )}
+    </div>
+)}
 			{project.heroMedia?.type === 'image' && (
 				<img class="h-full w-full object-cover" src={project.heroMedia.src} alt={project.title} />
 			)}
