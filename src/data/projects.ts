@@ -54,6 +54,14 @@ export const recentProjects: Project[] = [
 ];
 
 export const archivedProjects: Project[] = [
+   {
+    slug: 'color-of-air',
+    title: 'The Color of Air (student code-installation)',
+    description: 'Project description placeholder for The Color of Air.',
+    slides: ['/Color-air-one.jpg', '/Color-air-two.jpg'],
+    layout: 'narrow',
+    tags: 'Code, installation, architecture',
+  },
   {
     slug: 'extended-data-font',
     title: 'Extended data font',
@@ -70,14 +78,6 @@ export const archivedProjects: Project[] = [
     tags: 'Research, publication',
     pdfUrl: '/metabolism-research.pdf'
 },
-  {
-    slug: 'color-of-air',
-    title: 'The Color of Air (student code-installation)',
-    description: 'Project description placeholder for The Color of Air.',
-    slides: ['/Color-air-one.jpg', '/Color-air-two.jpg'],
-    layout: 'narrow',
-    tags: 'Code, installation, architecture',
-  },
 ];
 
 export const allProjects: Project[] = [...recentProjects, ...archivedProjects];
