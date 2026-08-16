@@ -37,33 +37,35 @@ const mediumUrl =
 			</div>
 		</section>
 
-		<section>
-			<span class="mb-6 inline-block text-[16.8px] text-black font-medium">
-				Archived work
-			</span>
-			<span id="external-label" class="pointer-events-none fixed z-50 hidden text-[12px] font-medium leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; max-width: 200px;">External link</span>
-			<ul class="flex flex-col gap-3">
-				<li class="relative">
-    <a href={mediumUrl} target="_blank" rel="noopener noreferrer" class="text-black leading-tight block">
-        UX article on Medium: Why does building digital trust feels so exhausting
-    </a>
-    <p class="text-[15px] leading-tight mt-0 text-[#787878]">UX writing & research</p>
-</li>
-				{
-					archivedProjects.map((project) => (
-    <li>
-    <a href={project.pdfUrl ? project.pdfUrl : `/projects/${project.slug}`} 
-       class="text-black block"
-       target={project.pdfUrl ? '_blank' : ''}
-       rel={project.pdfUrl ? 'noopener noreferrer' : ''}>
-        {project.title}
-    </a>
-    {project.tags && <p class="text-[15px] mt-0 leading-tight text-[#787878]">{project.tags}</p>}
-</li>
-					))
-				}
-			</ul>
-		</section>
+		{(archivedProjects.some(p => !p.hidden)) && (
+    <section>
+        <span class="mb-6 inline-block text-[16.8px] text-black font-medium">
+            Archived work
+        </span>
+        <span id="external-label" class="pointer-events-none fixed z-50 hidden text-[12px] font-medium leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; max-width: 200px;">External link</span>
+        <ul class="flex flex-col gap-3">
+            <li class="relative">
+                <a href={mediumUrl} target="_blank" rel="noopener noreferrer" class="text-black leading-tight block">
+                    UX article on Medium: Why does building digital trust feels so exhausting
+                </a>
+                <p class="text-[15px] leading-tight mt-0 text-[#787878]">UX writing & research</p>
+            </li>
+            {
+                archivedProjects.filter(p => !p.hidden).map((project) => (
+                    <li>
+                        <a href={project.pdfUrl ? project.pdfUrl : `/projects/${project.slug}`}
+                            class="text-black block"
+                            target={project.pdfUrl ? '_blank' : ''}
+                            rel={project.pdfUrl ? 'noopener noreferrer' : ''}>
+                            {project.title}
+                        </a>
+                        {project.tags && <p class="text-[15px] mt-0 leading-tight text-[#787878]">{project.tags}</p>}
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+)}
 	</main>
 </Layout>
 

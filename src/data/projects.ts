@@ -13,6 +13,7 @@ export interface Project {
   collaborator?: string;
   hoverVideo?: string;
   pdfUrl?: string;
+  hidden?: boolean;
 }
 
 export const recentProjects: Project[] = [
@@ -61,6 +62,7 @@ export const archivedProjects: Project[] = [
     slides: ['/Color-air-one.jpg', '/Color-air-two.jpg'],
     layout: 'narrow',
     tags: 'Code, installation, architecture',
+    hidden: true,
   },
   {
     slug: 'extended-data-font',
@@ -69,14 +71,16 @@ export const archivedProjects: Project[] = [
     heroMedia: {
         type: 'video',
         src: '/font-animation.mp4'
-    }
+    },
+    hidden: true,
   },
   {
     slug: 'metabolism-research',
     title: 'Metabolism research',
     description: '',
     tags: 'Research, publication',
-    pdfUrl: '/metabolism-research.pdf'
+    pdfUrl: '/metabolism-research.pdf',
+    hidden: true,
 },
 ];
 
