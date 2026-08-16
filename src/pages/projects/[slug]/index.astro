@@ -16,12 +16,12 @@ const { project } = Astro.props;
 <Layout title={`${project.title} — Portfolio`}>
 	<Nav current="project" slug={project.slug} />
 	<main class="px-[10px]">
-		<section class={`relative mt-[20px] h-[calc(100vh_-_214px)] overflow-hidden rounded-[5px] bg-black ${project.layout === 'narrow' ? 'w-full md:w-1/3' : 'w-full'}`}>
+		<section class={`relative mt-[20px] h-[calc(100vh_-_214px)] overflow-hidden rounded-[5px] bg-neutral-300 ${project.layout === 'narrow' ? 'w-full md:w-1/3' : 'w-full'}`}>
 			{project.heroMedia?.type === 'video' && (
     <div class="relative h-full w-full group/hero">
         <video
             id="hero-video"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover scale-[1.01]"
             src={project.heroMedia.src}
             autoplay
             muted
