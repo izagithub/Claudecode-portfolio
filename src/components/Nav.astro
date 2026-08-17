@@ -6,7 +6,7 @@ interface Props {
 
 const { current, slug } = Astro.props;
 
-const inactive = 'text-[#B5B5B5]';
+const inactive = 'text-[#4C4C4C]';
 const active = 'text-black';
 
 const slugsWithCasestudy = ['microinterventions', 'communication-gear'];
@@ -27,7 +27,7 @@ const casestudyLink = hasCasestudy
   : null;
 ---
 
-<nav class="relative mt-[80px] md:mt-[160px] ml-[10px] flex gap-3 text-[16.8px] font-medium">
+<nav class="relative mt-[80px] md:mt-[160px] ml-[10px] flex gap-3 text-[16.8px]">
     <a href={left.href} class={left.className}>{left.label}</a>
     <a href={middle.href} class={middle.className}>{middle.label}</a>
     {casestudyLink && <a href={casestudyLink.href} class={casestudyLink.className}>{casestudyLink.label}</a>}
