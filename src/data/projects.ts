@@ -26,7 +26,7 @@ export const recentProjects: Project[] = [
       type: 'video',
       src: '/plugins-animation-hero1.mp4'
     },
-    tags: 'UX, UI, AI, Motion design. Concept with Szymon Łabuś',
+    tags: 'UX, UI, AI, Motion design <br> Concept with Szymon Łabuś',
     collaborator: 'Concept with Szymon Łabuś',
     hoverVideo: '/plugins-hoover.mp4'
   },
