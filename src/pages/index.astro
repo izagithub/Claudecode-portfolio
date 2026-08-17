@@ -16,7 +16,7 @@ const mediumUrl =
 					recentProjects.map((project) => (
 						<a href={`/projects/${project.slug}`} class="block relative group/card mb-[90px] md:mb-0 h-[calc(100vh_-_100px)] md:h-[calc(100vh_-_230px)]" data-tags={project.tags || ''} data-collaborator={project.collaborator || ''}>
 							{project.cover
-								? <img src={project.cover} class={`h-full w-full object-cover rounded-[10px] transition-opacity duration-300 ${project.hoverVideo ? 'group-hover/card:opacity-0' : ''}`} />
+								? <img src={project.cover} class={`h-full w-full object-cover rounded-[15px] transition-opacity duration-300 ${project.hoverVideo ? 'group-hover/card:opacity-0' : ''}`} />
 								: <div class="h-full w-full bg-neutral-300 rounded-[5px]" />
 							}
 							{project.hoverVideo && project.slug === 'microinterventions' && (
