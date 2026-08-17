@@ -7,12 +7,6 @@ import Nav from '../components/Nav.astro';
     <Nav current="about" />
     <main class="px-[10px] pb-20">
         <div class="mt-6 w-full md:w-2/5">
-            <div class="flex justify-start md:hidden mb-4">
-                <audio id="about-mobile" src="/About.mp3"></audio>
-                <button id="audio-btn-mobile" class="text-[16.8px] text-black cursor-pointer">
-                    sound off
-                </button>
-            </div>
             <div class="flex gap-[40px] items-start">
                 <div class="flex-1">
                     <p class="text-[16.8px] text-black mb-6 leading-tight">
@@ -29,32 +23,7 @@ import Nav from '../components/Nav.astro';
                         <a href="mailto:izaszumniak@gmail.com" class="text-[16.8px] text-black block leading-tight">email</a>
                     </div>
                 </div>
-                <div class="hidden md:block">
-                    <audio id="about-desktop" src="/About.mp3"></audio>
-                    <button id="audio-btn-desktop" class="text-[16.8px] text-black cursor-pointer whitespace-nowrap">
-                        sound off
-                    </button>
-                </div>
             </div>
         </div>
     </main>
-    <script>
-        function setupAudio(audioId, btnId) {
-            const audio = document.getElementById(audioId) as HTMLAudioElement;
-            const btn = document.getElementById(btnId);
-            if (audio && btn) {
-                btn.addEventListener('click', () => {
-                    if (audio.paused) {
-                        audio.play();
-                        btn.textContent = 'sound on';
-                    } else {
-                        audio.pause();
-                        btn.textContent = 'sound off';
-                    }
-                });
-            }
-        }
-        setupAudio('about-mobile', 'audio-btn-mobile');
-        setupAudio('about-desktop', 'audio-btn-desktop');
-    </script>
 </Layout>
