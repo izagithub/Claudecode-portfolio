@@ -44,6 +44,13 @@ const { project } = Astro.props;
                 </span>
             </a>
         )}
+                {project.slug === 'watch-me-burn' && (
+            <div class="absolute bottom-[5px] left-[85px] right-[10px] opacity-100 transition-opacity duration-300">
+    <div class="relative h-[23px] bg-white/20 rounded-[30px] cursor-pointer" id="progress-bar">
+        <div id="progress-fill" class="absolute top-0 left-0 h-full bg-white/60 rounded-[25px]" style="width: 0%"></div>
+    </div>
+</div>
+        )}
     </div>
 )}
 			{project.heroMedia?.type === 'image' && (
@@ -286,6 +293,22 @@ if (creditsEl && creditsLabel) {
     creditsEl.addEventListener('mousemove', (e) => {
         creditsLabel.style.left = e.clientX + 15 + 'px';
         creditsLabel.style.top = e.clientY + 15 + 'px';
+    });
+}
+if (document.getElementById('progress-bar')) {
+    const progressVideo = document.getElementById('hero-video') as HTMLVideoElement;
+    const progressBar = document.getElementById('progress-bar');
+    const progressFill = document.getElementById('progress-fill');
+
+    progressVideo?.addEventListener('timeupdate', () => {
+        const percent = (progressVideo.currentTime / progressVideo.duration) * 100;
+        if (progressFill) progressFill.style.width = percent + '%';
+    });
+
+    progressBar?.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        if (progressVideo) progressVideo.currentTime = percent * progressVideo.duration;
     });
 }
 </script>
