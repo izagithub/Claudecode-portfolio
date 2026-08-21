@@ -26,7 +26,7 @@ export const recentProjects: Project[] = [
       type: 'video',
       src: '/plugins-animation-hero1.mp4'
     },
-    tags: 'UX, UI, AI, Motion design',
+    tags: 'UX, AI, motion design',
     hoverVideo: '/plugins-hoover.mp4'
   },
   {
