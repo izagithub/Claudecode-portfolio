@@ -83,8 +83,17 @@ const { project } = Astro.props;
                     Recommend muting the video above before scrolling further.
                 </p>
             </div>
-            <video
-    class="rounded-[5px] md:rounded-[30px] object-cover w-full h-auto md:h-full md:w-[calc(60%_-_3px)]"
+           <!-- mobile -->
+<video
+    class="block md:hidden rounded-[5px] object-cover w-full h-auto"
+    src="/plugins-vertical.mp4"
+    muted
+    loop
+    playsinline
+/>
+<!-- desktop -->
+<video
+    class="hidden md:block rounded-[5px] md:rounded-[30px] object-cover w-full h-auto md:h-full md:w-[calc(60%_-_3px)]"
     src="/plugins-animation-second.mp4"
     autoplay
     muted
@@ -93,17 +102,35 @@ const { project } = Astro.props;
 />
         </div>
         <div class="flex flex-col gap-[6px] mt-3">
-            <video
-    class="rounded-[5px] object-cover w-full mb-11"
+            <!-- mobile -->
+<video
+    class="block md:hidden rounded-[5px] object-cover w-full mb-2"
+    src="/plugins-animation-svertical.mp4"
+    muted
+    loop
+    playsinline
+/>
+<!-- desktop -->
+<video
+    class="hidden md:block rounded-[5px] object-cover w-full mb-11"
     src="/plugins-animation-s.mp4"
     autoplay
     muted
     loop
     playsinline
 />
-           <video
+<!-- mobile -->
+<video
+    class="block md:hidden rounded-[5px] object-cover w-full"
+    src="/plugins-animation-cvertical.mp4"
+    muted
+    loop
+    playsinline
+/>
+<!-- desktop -->
+<video
     id="last-video"
-    class="rounded-[5px] object-cover w-full"
+    class="hidden md:block rounded-[5px] object-cover w-full"
     src="/plugins-animation-c.mp4"
     muted
     loop
@@ -311,4 +338,18 @@ if (document.getElementById('progress-bar')) {
         if (progressVideo) progressVideo.currentTime = percent * progressVideo.duration;
     });
 }
+document.querySelectorAll('video:not(#hero-video):not(#last-video)').forEach(video => {
+    const el = video as HTMLVideoElement;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                el.play();
+            } else {
+                el.pause();
+                el.currentTime = 0;
+            }
+        });
+    }, { threshold: 0.5 });
+    observer.observe(el);
+});
 </script>
