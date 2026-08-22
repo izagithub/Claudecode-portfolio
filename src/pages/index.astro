@@ -11,10 +11,10 @@ const mediumUrl =
 	<Nav current="work" />
 	<main class="px-[10px] pb-10">
 		<section class="mt-[20px] mb-4 md:mb-10">
-			<div class="gallery-recent relative grid grid-cols-1 md:grid-cols-3 gap-x-[10px] gap-y-[30px]">
+			<div class="gallery-recent relative grid grid-cols-1 md:grid-cols-3 gap-x-[10px] gap-y-[5px] md:gap-y-[30px]">
 				{
 					recentProjects.map((project) => (
-						<a href={`/projects/${project.slug}`} class="block relative group/card mb-[90px] md:mb-0 h-[calc(100vh_-_100px)] md:h-[calc(100vh_-_230px)]" data-tags={project.tags || ''} data-collaborator={project.collaborator || ''}>
+						<a href={`/projects/${project.slug}`} class="block relative group/card mb-[10px] md:mb-0 h-[calc(66vh)] md:h-[calc(100vh_-_230px)]" data-tags={project.tags || ''} data-collaborator={project.collaborator || ''}>
 							{project.cover
 								? <img src={project.cover} class={`h-full w-full object-cover rounded-[15px] transition-opacity duration-300 ${project.hoverVideo ? 'group-hover/card:opacity-0' : ''}`} />
 								: <div class="h-full w-full bg-neutral-300 rounded-[5px]" />
@@ -29,7 +29,7 @@ const mediumUrl =
 									data-hover-video
 								/>
 							)}
-							<div class="absolute bottom-[10px] left-[10px] right-[10px] flex gap-[6px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
+							<div class="project-labels pointer-events-none absolute bottom-[10px] left-[10px] right-[10px] flex gap-[6px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
     <span class="bg-white rounded-[8px] px-[12px] py-[8px] text-[14px] text-black leading-tight max-w-[200px]">{project.title}</span>
     {project.tags && <span class="bg-white rounded-[8px] px-[12px] py-[8px] text-[14px] text-black leading-tight">{project.tags}</span>}
 </div>
@@ -39,9 +39,9 @@ const mediumUrl =
                 <a href="https://medium.com/@izaszumniak/why-building-digital-trust-feels-so-exhausting-ccdf04e6f475" 
    target="_blank" 
    rel="noopener noreferrer"
-   class="block relative group/card mb-[90px] md:mb-0 h-[calc(100vh_-_100px)] md:h-[calc(100vh_-_230px)]">
+   class="block relative group/card mb-[10px] md:mb-0 h-[calc(66vh)] md:h-[calc(100vh_-_230px)]">
     <img src="/medium-work1.jpg" class="h-full w-full object-cover rounded-[10px] transition-opacity duration-300" />
-    <div class="absolute bottom-[10px] left-[10px] right-[10px] w-fit inline-flex gap-[6px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
+    <div class="project-labels pointer-events-none absolute bottom-[10px] left-[10px] right-[10px] w-fit inline-flex gap-[6px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
         <span class="bg-white rounded-[8px] px-[12px] py-[8px] text-[14px] text-black leading-tight max-w-[200px]">Why does building digital trust feels so exhausting?</span>
         <span class="bg-white rounded-[8px] px-[12px] py-[8px] text-[14px] text-black leading-tight shrink-0">UX writing<br/>External link</span>
     </div>
@@ -98,4 +98,14 @@ if (externalLink && externalLabel) {
         externalLabel.style.top = e.clientY + 15 + 'px';
     });
 }
+document.querySelectorAll('.group\\/card').forEach(card => {
+    card.addEventListener('touchstart', () => {
+        const labels = card.querySelector('.project-labels');
+        if (labels) labels.classList.add('!opacity-100');
+    });
+    card.addEventListener('touchend', () => {
+        const labels = card.querySelector('.project-labels');
+        if (labels) labels.classList.remove('!opacity-100');
+    });
+});
 </script>
